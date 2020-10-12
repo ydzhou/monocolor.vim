@@ -28,6 +28,8 @@ highlight Special guifg=#FFFFFF	gui=bold ctermfg=white cterm=bold
 highlight Statement	guifg=#FFFFFF gui=bold,underline ctermfg=white cterm=bold
 highlight Type guifg=#FFFFFF gui=bold ctermfg=white cterm=bold
 
+
+
 else
 
 " GUI:
@@ -41,7 +43,7 @@ highlight Folded guifg=#000000 ctermfg=black
 highlight Pmenu guifg=#000000 guibg=#cccccc ctermfg=black ctermbg=251
 
 " Syntax:
-highlight Normal guifg=#000000 ctermfg=black
+highlight Normal guibg=#fafafa guifg=#000000 ctermfg=black
 highlight Constant guifg=#808080 gui=bold ctermfg=242 cterm=bold
 highlight Identifier guifg=#000000 gui=bold ctermfg=black cterm=bold
 highlight PreProc guifg=#000000	gui=bold ctermfg=black cterm=bold
