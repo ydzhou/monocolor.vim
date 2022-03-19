@@ -7,52 +7,111 @@ endif
 
 let g:colors_name = "monocolor"
 
+""""""""""""""""""""""""""""""""""
+" GUI colors
+let s:m_black1_gui = "#3A3A3A"
+let s:m_black0_gui = "#000000"
+let s:m_gray0_gui = "#808080"
+let s:m_gray1_gui = "#4E4E4E"
+let s:m_gray3_gui = "#9E9E9E"
+let s:m_gray2_gui = "#CCCCCC"
+let s:m_white1_gui = "#E4E4E4"
+let s:m_white0_gui = "#EEEEEE"
+
+""""""""""""""""""""""""""""""""""
+" 256 term colors
+let s:m_black1_term = "237"
+let s:m_black0_term = "0"
+let s:m_gray0_term = "244"
+let s:m_gray1_term = "239"
+let s:m_gray3_term = "247"
+let s:m_gray2_term = "251"
+let s:m_white1_term = "254"
+let s:m_white0_term = "255"
+
+function! s:hi(group, guibg, guifg, ctermbg, ctermfg, attr)
+  if a:guifg != ""
+    exec "hi " . a:group . " guifg=" . a:guifg
+  endif
+  if a:guibg != ""
+    exec "hi " . a:group . " guibg=" . a:guibg
+  endif
+  if a:ctermfg != ""
+    exec "hi " . a:group . " ctermfg=" . a:ctermfg
+  endif
+  if a:ctermbg != ""
+    exec "hi " . a:group . " ctermbg=" . a:ctermbg
+  endif
+  if a:attr != ""
+    exec "hi " . a:group . " gui=" . a:attr . " cterm=" . substitute(a:attr, "undercurl", "underline", "")
+  endif
+endfunction
+
 if &background == "dark"
 
+let s:m_dark_bg = s:m_black1_gui
+let s:m_dark_bg_term = s:m_black1_term
+let s:m_dark_bg_2nd = s:m_gray0_gui
+let s:m_dark_bg_2nd_term = s:m_gray0_term
+let s:m_dark_fg = s:m_white1_gui
+let s:m_dark_fg_term = s:m_white1_term
+let s:m_dark_fg_2nd = s:m_gray3_gui
+let s:m_dark_fg_2nd_term = s:m_gray3_term
+
 " GUI:
-highlight Comment guifg=#909090 gui=italic ctermfg=8
-highlight Cursor guibg=#FFFFFF
-highlight CursorLine guibg=#474747 ctermbg=236
-highlight Error	guifg=#909090 guibg=#000000 ctermfg=8 ctermbg=white
-highlight Visual guifg=#FFFFFF guibg=grey ctermfg=white ctermbg=grey
-highlight LineNr guifg=#808080 ctermfg=8
-highlight Folded guifg=#000000 ctermfg=black
-highlight Pmenu guifg=#FFFFFF guibg=#474747 ctermfg=white ctermbg=236
+call s:hi("Comment", "", s:m_dark_fg_2nd, "", s:m_dark_fg_2nd_term, "italic")
+call s:hi("Cursor", s:m_dark_fg, "", "", "", "")
+call s:hi("CursorLine", s:m_dark_bg_2nd , "", s:m_dark_bg_2nd_term, "", "")
+call s:hi("Error", s:m_dark_bg, s:m_dark_fg, s:m_dark_bg_term, s:m_dark_fg_term, "")
+call s:hi("Visual", s:m_dark_fg, s:m_dark_bg, s:m_dark_fg_term, s:m_dark_bg_term, "")
+call s:hi("LineNr", "", s:m_dark_bg_2nd, "", s:m_dark_bg_2nd_term, "")
+call s:hi("Folded", "", s:m_dark_fg, "", s:m_dark_fg_term, "")
+call s:hi("Pmenu", s:m_dark_fg, s:m_dark_bg, s:m_dark_fg_term, s:m_dark_bg_term, "")
 
 " Syntax:
-highlight Normal guibg=#262626 guifg=#DADADA ctermbg=black ctermfg=253
-highlight Constant guifg=#CCCCCC gui=bold ctermfg=252 cterm=bold
-highlight Identifier guifg=#FFFFFF gui=bold ctermfg=white cterm=bold
-highlight PreProc guifg=#FFFFFF	gui=bold ctermfg=white cterm=bold
-highlight Special guifg=#FFFFFF	gui=bold ctermfg=white cterm=bold
-highlight Statement	guifg=#FFFFFF gui=bold,underline ctermfg=white cterm=bold
-highlight Type guifg=#FFFFFF gui=bold ctermfg=white cterm=bold
-
-
+call s:hi("Normal", s:m_dark_bg, s:m_dark_fg, s:m_dark_bg_term, s:m_dark_fg_term, "")
+call s:hi("Constant", "", s:m_dark_fg, "", s:m_dark_fg_term, "italic")
+call s:hi("Identifier", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
+call s:hi("PreProc", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
+call s:hi("Statement", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
+call s:hi("Type", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
+call s:hi("Special", "", s:m_dark_fg, "", s:m_dark_fg_term, "italic")
 
 else
 
+let s:m_light_bg = s:m_white0_gui
+let s:m_light_bg_term = s:m_white0_term
+let s:m_light_bg_2nd = s:m_gray0_gui
+let s:m_light_bg_2nd_term = s:m_gray0_term
+let s:m_light_bg_3rd = s:m_black1_gui
+let s:m_light_bg_3rd_term = s:m_black1_term
+let s:m_light_fg = s:m_black0_gui
+let s:m_light_fg_term = s:m_black0_term
+let s:m_light_fg_2nd = s:m_gray1_gui
+let s:m_light_fg_2nd_term = s:m_gray1_term
+let s:m_light_fg_3nd = s:m_gray2_gui
+let s:m_light_fg_3nd_term = s:m_gray2_term
+
 " GUI:
-highlight Comment guifg=#808080 gui=italic ctermfg=grey
-highlight Cursor guibg=#000000
-highlight CursorLine guibg=#cccccc ctermbg=251
-highlight Error	guifg=#808080 guibg=#000000 ctermfg=grey ctermbg=black
-highlight Visual guifg=#000000 guibg=grey ctermfg=black ctermbg=grey
-highlight LineNr guifg=#808080 ctermfg=grey
-highlight Folded guifg=#000000 ctermfg=black
-highlight Pmenu guifg=#000000 guibg=#cccccc ctermfg=black ctermbg=251
+call s:hi("Comment", "", s:m_light_bg_2nd, "", s:m_light_bg_2nd_term, "italic")
+call s:hi("Cursor", s:m_light_fg, "", "", "", "")
+call s:hi("CursorLine", s:m_light_fg_3nd , "", s:m_light_fg_3nd_term, "", "")
+call s:hi("Error", s:m_light_bg_2nd, s:m_light_fg, s:m_light_bg_2nd_term, s:m_light_fg_term, "")
+call s:hi("Visual", s:m_light_bg_2nd, s:m_light_bg, s:m_light_fg_2nd_term, s:m_light_bg_term, "")
+call s:hi("LineNr", "", s:m_light_fg_3nd, "", s:m_light_fg_3nd_term, "")
+call s:hi("Folded", "", s:m_light_fg, "", s:m_light_fg_term, "")
+call s:hi("Pmenu", s:m_light_bg_3rd, s:m_light_bg, s:m_light_bg_3rd_term, s:m_light_bg_term, "")
 
 " Syntax:
-highlight Normal guibg=#fafafa guifg=#000000 ctermfg=black
-highlight Constant guifg=#808080 gui=bold ctermfg=242 cterm=bold
-highlight Identifier guifg=#000000 gui=bold ctermfg=black cterm=bold
-highlight PreProc guifg=#000000	gui=bold ctermfg=black cterm=bold
-highlight Special guifg=#000000	gui=bold ctermfg=black cterm=bold
-highlight Statement	guifg=#000000 gui=bold,underline ctermfg=black cterm=bold
-highlight Type guifg=#000000 gui=bold ctermfg=black cterm=bold
+call s:hi("Normal", s:m_light_bg, s:m_light_fg, s:m_light_bg_term, s:m_light_fg_term, "")
+call s:hi("Constant", "", s:m_light_fg_2nd, "", s:m_light_fg_2nd_term, "italic")
+call s:hi("Identifier", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
+call s:hi("PreProc", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
+call s:hi("Statement", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
+call s:hi("Type", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
+call s:hi("Special", "", s:m_light_fg, "", s:m_light_fg_term, "italic")
 
 endif
-
 
 " Links
 highlight! link Search		Visual
@@ -100,3 +159,4 @@ highlight! link Title		Structure
 highlight! link Todo		Error
 highlight! link Typedef		Type
 highlight! link WarningMsg	Error
+
