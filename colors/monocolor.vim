@@ -6,14 +6,6 @@ if exists("syntax_on")
 endif
 
 let g:colors_name = "monocolor"
-" Author: Y. ZHOU
-
-highlight clear
-if exists("syntax_on")
-	syntax reset
-endif
-
-let g:colors_name = "monocolor"
 
 """"""""""""""""""""""""""""""""""
 " GUI colors
@@ -74,6 +66,8 @@ if &background == "dark"
     call s:hi("LineNr", "", s:m_dark_bg_2nd, "", s:m_dark_bg_2nd_term, "")
     call s:hi("Folded", "", s:m_dark_fg, "", s:m_dark_fg_term, "")
     call s:hi("Pmenu", s:m_dark_fg, s:m_dark_bg, s:m_dark_fg_term, s:m_dark_bg_term, "")
+    call s:hi("StatusLine", s:m_dark_fg, s:m_dark_bg, s:m_dark_fg_term, s:m_dark_bg_term, "")
+    call s:hi("StatusLineNC", s:m_dark_fg_2nd, s:m_dark_bg, s:m_dark_fg_2nd_term, s:m_dark_bg_term, "")
 
     " Syntax:
     call s:hi("Normal", s:m_dark_bg, s:m_dark_fg, s:m_dark_bg_term, s:m_dark_fg_term, "")
@@ -115,6 +109,8 @@ else
     call s:hi("LineNr", "", s:m_light_fg_3nd, "", s:m_light_fg_3nd_term, "")
     call s:hi("Folded", "", s:m_light_fg, "", s:m_light_fg_term, "")
     call s:hi("Pmenu", s:m_light_bg_3rd, s:m_light_bg, s:m_light_bg_3rd_term, s:m_light_bg_term, "")
+    call s:hi("StatusLine", s:m_light_fg_2nd, s:m_light_bg, s:m_light_fg_2nd_term, s:m_light_bg_term, "")
+    call s:hi("StatusLineNC", s:m_light_fg_3nd, s:m_light_bg, s:m_light_fg_3nd_term, s:m_light_bg_term, "")
 
     " Syntax:
     call s:hi("Normal", s:m_light_bg, s:m_light_fg, s:m_light_bg_term, s:m_light_fg_term, "")
@@ -142,7 +138,9 @@ highlight! link Macro		PreProc
 highlight! link Boolean		Constant
 highlight! link Character	Constant
 highlight! link Conditional	Statement
+highlight! link CursorLineNr LineNr
 highlight! link CursorColumn	CursorLine
+highlight! link ColorColumn	CursorLine
 highlight! link Debug		PreProc	
 highlight! link Define		PreProc
 highlight! link Delimiter	Identifier
@@ -181,4 +179,8 @@ highlight! link Title		Structure
 highlight! link Todo		Error
 highlight! link Typedef		Type
 highlight! link WarningMsg	Error
+highlight! link WildMenu Visual
+highlight! link StatusLineTerm StatusLine
+highlight! link StatusLineTermNC StatusLineNC
+highlight! link Todo Identifier
 
