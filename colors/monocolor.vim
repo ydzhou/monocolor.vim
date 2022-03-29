@@ -5,6 +5,8 @@ if exists("syntax_on")
 	syntax reset
 endif
 
+let &t_ut=''
+
 let g:colors_name = "monocolor"
 
 """"""""""""""""""""""""""""""""""
@@ -98,19 +100,20 @@ else
     let s:m_light_fg_term = s:m_black0_term
     let s:m_light_fg_2nd = s:m_gray1_gui
     let s:m_light_fg_2nd_term = s:m_gray1_term
-    let s:m_light_fg_3nd = s:m_gray2_gui
-    let s:m_light_fg_3nd_term = s:m_gray2_term
+    let s:m_light_fg_3rd = s:m_gray2_gui
+    let s:m_light_fg_3rd_term = s:m_gray2_term
 
     " GUI:
     call s:hi("Cursor", s:m_light_fg, "", "", "", "")
-    call s:hi("CursorLine", s:m_light_fg_3nd , "", s:m_light_fg_3nd_term, "", "")
+    call s:hi("CursorLine", s:m_light_fg_3rd , "", s:m_light_fg_3rd_term, "", "")
     call s:hi("Error", s:m_light_bg_2nd, s:m_light_bg, s:m_light_bg_2nd_term, s:m_light_bg_term, "")
     call s:hi("Visual", s:m_light_bg_2nd, s:m_light_bg, s:m_light_fg_2nd_term, s:m_light_bg_term, "")
-    call s:hi("LineNr", "", s:m_light_fg_3nd, "", s:m_light_fg_3nd_term, "")
+    call s:hi("LineNr", "", s:m_light_fg_3rd, "", s:m_light_fg_3rd_term, "")
     call s:hi("Folded", "", s:m_light_fg, "", s:m_light_fg_term, "")
     call s:hi("Pmenu", s:m_light_bg_3rd, s:m_light_bg, s:m_light_bg_3rd_term, s:m_light_bg_term, "")
-    call s:hi("StatusLine", s:m_light_fg_2nd, s:m_light_bg, s:m_light_fg_2nd_term, s:m_light_bg_term, "")
-    call s:hi("StatusLineNC", s:m_light_fg_3nd, s:m_light_bg, s:m_light_fg_3nd_term, s:m_light_bg_term, "")
+    " call s:hi("StatusLine", s:m_light_fg_2nd, s:m_light_bg, s:m_light_fg_2nd_term, s:m_light_bg_term, "")
+    call s:hi("StatusLine", s:m_light_bg, s:m_light_fg_2nd, s:m_light_bg_term, s:m_light_fg_2nd_term, "")
+    call s:hi("StatusLineNC", s:m_light_bg, s:m_light_fg, s:m_light_bg_term, s:m_light_fg_term, "")
 
     " Syntax:
     call s:hi("Normal", s:m_light_bg, s:m_light_fg, s:m_light_bg_term, s:m_light_fg_term, "")
