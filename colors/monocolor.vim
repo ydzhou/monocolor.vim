@@ -74,9 +74,9 @@ if &background == "dark"
     " Syntax:
     call s:hi("Normal", s:m_dark_bg, s:m_dark_fg, s:m_dark_bg_term, s:m_dark_fg_term, "")
     call s:hi("Identifier", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
-    call s:hi("PreProc", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
-    call s:hi("Statement", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
-    call s:hi("Type", "", s:m_dark_fg, "", s:m_dark_fg_term, "bold")
+    call s:hi("PreProc", "", s:m_dark_fg, "", s:m_dark_fg_term, "")
+    call s:hi("Statement", "", s:m_dark_fg, "", s:m_dark_fg_term, "")
+    call s:hi("Type", "", s:m_dark_fg, "", s:m_dark_fg_term, "")
 
     if has('gui_running')
         call s:hi("Comment", "", s:m_dark_fg_2nd, "", s:m_dark_fg_2nd_term, "italic")
@@ -118,9 +118,9 @@ else
     " Syntax:
     call s:hi("Normal", s:m_light_bg, s:m_light_fg, s:m_light_bg_term, s:m_light_fg_term, "")
     call s:hi("Identifier", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
-    call s:hi("PreProc", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
-    call s:hi("Statement", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
-    call s:hi("Type", "", s:m_light_fg, "", s:m_light_fg_term, "bold")
+    call s:hi("PreProc", "", s:m_light_fg, "", s:m_light_fg_term, "")
+    call s:hi("Statement", "", s:m_light_fg, "", s:m_light_fg_term, "")
+    call s:hi("Type", "", s:m_light_fg, "", s:m_light_fg_term, "")
 
     if has('gui_running')
         call s:hi("Special", "", s:m_light_fg, "", s:m_light_fg_term, "italic")
